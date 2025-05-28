@@ -5,4 +5,5 @@ type LotteryMessage struct {
 	Number int    `json:"number"`
 	Result string `json:"result"`
 	Prize  int    `json:"prize"`
+	Token  string `json:"token,omitempty"`
 }

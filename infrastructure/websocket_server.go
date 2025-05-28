@@ -34,6 +34,9 @@ func (s *WebSocketServer) HandleConnections(w http.ResponseWriter, r *http.Reque
 	}
 	defer conn.Close()
 
+	// 從 URL 中提取 token
+	token := r.URL.Query().Get("token")
+
 	for {
 		_, msg, err := conn.ReadMessage()
 		if err != nil {
@@ -48,7 +51,10 @@ func (s *WebSocketServer) HandleConnections(w http.ResponseWriter, r *http.Reque
 			continue
 		}
 
-		result := s.lotteryService.ProcessLottery(lotteryMsg.Number)
+		// 設置 Token
+		lotteryMsg.Token = token
+
+		result := s.lotteryService.ProcessLottery(lotteryMsg)
 
 		err = conn.WriteJSON(result)
 		if err != nil {

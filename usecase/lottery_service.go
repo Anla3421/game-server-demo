@@ -6,16 +6,14 @@ import (
 
 type LotteryService struct{}
 
-func (s *LotteryService) ProcessLottery(number int) domain.LotteryMessage {
-	result := domain.LotteryMessage{
-		Number: number,
-	}
+func (s *LotteryService) ProcessLottery(msg domain.LotteryMessage) domain.LotteryMessage {
+	result := msg
 
 	switch {
-	case number == 7:
+	case msg.Number == 7:
 		result.Result = "特獎"
 		result.Prize = 10000
-	case number%2 == 0:
+	case msg.Number%2 == 0:
 		result.Result = "中獎"
 		result.Prize = 50
 	default:
