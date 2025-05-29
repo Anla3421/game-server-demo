@@ -1,8 +1,6 @@
 package usecase
 
-import (
-	"websocket-lottery/domain"
-)
+import "game-server-demo/domain"
 
 type LotteryService struct{}
 

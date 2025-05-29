@@ -2,10 +2,10 @@ package infrastructure
 
 import (
 	"encoding/json"
+	"game-server-demo/domain"
+	"game-server-demo/usecase"
 	"log"
 	"net/http"
-	"websocket-lottery/domain"
-	"websocket-lottery/usecase"
 
 	"github.com/gorilla/websocket"
 )
